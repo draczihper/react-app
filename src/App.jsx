@@ -1,15 +1,10 @@
 import './App.css'
 
-function ListItem(props){
-  return <li>{props.animal}</li>
-}
-
 function List(props){
   return (
     <ul>
       {props.animals.map((animal) =>  {
-        return <ListItem key={animal} animal={animal} />
-      })}
+        return animal.startsWith('l') ? <li key={animal}>{animal}</li> : null})}
     </ul>
   )
 }
