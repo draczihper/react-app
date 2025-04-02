@@ -1,23 +1,24 @@
-import './App.css'
-
-function List(props){
+function Drink({ name }) {
   return (
-    <ul>
-      {props.animals.map((animal) =>  {
-        return animal.startsWith('l') ? <li key={animal}>{animal}</li> : null})}
-    </ul>
-  )
+    <section>
+      <h1>{name}</h1>
+      <dl>
+        <dt>Part of plant</dt>
+        <dd>{name === 'tea' ? 'leaf' : 'bean'}</dd>
+        <dt>Caffeine content</dt>
+        <dd>{name === 'tea' ? '15–70 mg/cup' : '80–185 mg/cup'}</dd>
+        <dt>Age</dt>
+        <dd>{name === 'tea' ? '4,000+ years' : '1,000+ years'}</dd>
+      </dl>
+    </section>
+  );
 }
 
-
-function App() {
-  const animals = ['lion', 'cheetah', 'lynx', 'leopard', 'tiger']
+export default function DrinkList() {
   return (
     <div>
-      <h1>Animal:</h1>
-      <List animals={animals} />
+      <Drink name="tea" />
+      <Drink name="coffee" />
     </div>
-  )
+  );
 }
-
-export default App
