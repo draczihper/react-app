@@ -21,7 +21,7 @@ export default function List() {
             />
           <p>
           <b>{person.name}:</b>
-            {" " + person.profession + " "} + and is known for + {person.accomplishement}
+            {" " + person.profession + " "} and is known for  {person.accomplishment}
           
          </p>
           </li>
