@@ -13,12 +13,12 @@ function Button({text="Click me!", color = "blue", fontSize = 12, handleClick}) 
 }
 
 export default function App() {
-  const handleClick = () => {
+  const handleButtonClick = () => {
     window.location.href = "https://www.google.com"
   }
   return (
     <div>
-      <Button />
+      <Button  handleClick={handleButtonClick}/>
     </div>
   );
 }
