@@ -1,14 +1,23 @@
-function Button() {
+function Button({text="Click me!", color = "blue", fontSize = 12, handleClick}) {
+  const buttonStyle = {
+    color: color,
+    fontSize: fontSize + "px"
+  };
+
+
   return (
-    <button>Click Me!</button>
+    <button onClick={handleClick} style={buttonStyle}>
+      {text}
+      </button>
   );
 }
 
 export default function App() {
+  const handleClick = () => {
+    window.location.href = "https://www.google.com"
+  }
   return (
     <div>
-      <Button />
-      <Button />
       <Button />
     </div>
   );
