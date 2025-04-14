@@ -1,38 +1,32 @@
-import { getImageUrl } from './utils.js';
+import { sculptureList } from './data.js';
 
-function Avatar({ person, size }) {
-  let thumbnailSize  = "s"
-  if(size > 90) thumbnailSize = "b" 
+export default function Gallery() {
+  let index = 0;
+
+  function handleClick() {
+    index = index + 1;
+  }
+
+  let sculpture = sculptureList[index];
   return (
-    <img
-      className="avatar"
-      src={getImageUrl(person, thumbnailSize)}
-      alt={person.name}
-      width={size}
-      height={size}
-    />
-  );
-}
-
-export default function Profile() {
-  return (
-    <div>
-
-    <Avatar
-    size={40}
-    person={{ 
-      name: 'Gregorio Y. Zara', 
-      imageId: '7vQD0fP'
-    }}
-    />
-
-      <Avatar
-    size={120}
-    person={{ 
-      name: 'Gregorio Y. Zara', 
-      imageId: '7vQD0fP'
-    }}
-    />
-    </div>
+    <>
+      <button onClick={handleClick}>
+        Next
+      </button>
+      <h2>
+        <i>{sculpture.name} </i> 
+        by {sculpture.artist}
+      </h2>
+      <h3>  
+        ({index + 1} of {sculptureList.length})
+      </h3>
+      <img 
+        src={sculpture.url} 
+        alt={sculpture.alt}
+      />
+      <p>
+        {sculpture.description}
+      </p>
+    </>
   );
 }
