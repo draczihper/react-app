@@ -5,7 +5,7 @@ export default function Page() {
     <div className="Page">
       <Gallery />
       <App />
-      
+      <Gallery />
     </div>
   );
 }
