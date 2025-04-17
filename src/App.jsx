@@ -6,7 +6,7 @@ export default function Gallery() {
   const [showMore, setShowMore] = useState(false);
 
   function handleNextClick() {
-    setIndex(index + 1);
+    index >= sculptureList.length ? index = 0 : setIndex(index + 1)
   }
 
   function handleMoreClick() {
@@ -16,7 +16,7 @@ export default function Gallery() {
   let sculpture = sculptureList[index];
   return (
     <>
-      <button onClick={handleNextClick}>
+      <button onClick={index !== sculptureList.length ? handleNextClick : console.log('disable')}>
         Next
       </button>
       <h2>
