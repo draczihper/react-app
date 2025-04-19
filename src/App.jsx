@@ -15,7 +15,9 @@ export default function Gallery() {
   }
 
   function handleNextClick() {
-    index
+    if (hasNext){
+      setIndex(index + 1);
+    }
   }
 
   function handleMoreClick() {
