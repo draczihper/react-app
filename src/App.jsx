@@ -8,6 +8,12 @@ export default function Gallery() {
   let hasPrev = index > 0;
   let hasNext = index < sculptureList.length - 1;
 
+  function handlePrevClick() {
+    if(hasPrev) {
+      setIndex(index - 1);
+    }
+  }
+
   function handleNextClick() {
     index
   }
