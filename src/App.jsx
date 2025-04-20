@@ -30,7 +30,7 @@ export default function Gallery() {
     <button onClick={handlePrevClick} disabled={!hasNext}>
       Previous
     </button>
-      <button onClick={handleNextClick}>
+      <button onClick={handleNextClick} disabled={!hasNext}>
         Next
       </button>
       <h2>
