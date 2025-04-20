@@ -27,6 +27,9 @@ export default function Gallery() {
   let sculpture = sculptureList[index];
   return (
     <>
+    <button onClick={handlePrevClick} disabled={!hasNext}>
+      Previous
+    </button>
       <button onClick={handleNextClick}>
         Next
       </button>
