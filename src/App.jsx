@@ -3,7 +3,7 @@ import { sculptureList } from './data.js';
 
 export default function Gallery() {
   const [index, setIndex] = useState(0);
-  const [showMore, setShowMore] = useState(true);
+  const [showMore, setShowMore] = useState(false);
 
   let hasPrev = index > 0;
   let hasNext = index < sculptureList.length - 1;
