@@ -5,11 +5,11 @@ export default function Form() {
   const [lastName, setLastName] = useState("");
 
   function handleFirstNameChange(e) {
-    setFirstName(e.target.value);;
+    setFirstName(e.target.value);
   }
 
   function handleLastNameChange(e) {
-    lastName = e.target.value;
+    setLastName(e.target.value);
   }
 
   function handleReset() {
