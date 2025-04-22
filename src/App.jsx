@@ -13,8 +13,8 @@ export default function Form() {
   }
 
   function handleReset() {
-    firstName = "";
-    lastName = "";
+    setFirstName("");
+    setLastName("");
   }
 
   return (
