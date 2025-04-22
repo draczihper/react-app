@@ -3,10 +3,9 @@ import { useState } from "react";
 export default function Form() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  
-  
+
   function handleFirstNameChange(e) {
-    get.value;
+    setFirstName(e.target.value);;
   }
 
   function handleLastNameChange(e) {
@@ -14,12 +13,12 @@ export default function Form() {
   }
 
   function handleReset() {
-    firstName = '';
-    lastName = '';
+    firstName = "";
+    lastName = "";
   }
 
   return (
-    <form onSubmit={e => e.preventDefault()}>
+    <form onSubmit={(e) => e.preventDefault()}>
       <input
         placeholder="First name"
         value={firstName}
@@ -30,7 +29,9 @@ export default function Form() {
         value={lastName}
         onChange={handleLastNameChange}
       />
-      <h1>Hi, {firstName} {lastName}</h1>
+      <h1>
+        Hi, {firstName} {lastName}
+      </h1>
       <button onClick={handleReset}>Reset</button>
     </form>
   );
