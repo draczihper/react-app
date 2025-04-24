@@ -5,12 +5,14 @@ const COLORS = ["pink", "green", "blue", "yellow", "purple"];
 
 function App() {
   const [backgroundColor, setBackgroundColor] = useState(COLORS[0]);
-
+  const [noBkg, setnoBkg] = useState(0)
   const onButtonClick = (color) => () => {
     setBackgroundColor(color);
+    setnoBkg(noBkg + 1);
   };
 
   return (
+    <>
     <div
       className="App"
       style={{
@@ -28,6 +30,10 @@ function App() {
         </button>
       ))}
     </div>
+      <div>
+        <p>{}</p>
+      </div>
+    </>
   );
 }
 
