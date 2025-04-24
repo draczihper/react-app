@@ -8,8 +8,8 @@ function App() {
   const [noBkg, setnoBkg] = useState(0)
   const onButtonClick = (color) => () => {
     setBackgroundColor(color);
-    setnoBkg(noBkg + 1);
-  };
+    setnoBkg(noBkg + 1); 
+  }
 
   return (
     <>
@@ -31,7 +31,7 @@ function App() {
       ))}
     </div>
       <div>
-        <p>{}</p>
+        <p>{noBkg}</p>
       </div>
     </>
   );
