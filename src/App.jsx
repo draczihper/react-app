@@ -1,37 +1,22 @@
-import { useState } from "react";
+function Person() {
+  const [person, setPerson] = useState({ name: "John", age: 100 });
 
-export default function Form() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  
-  
-  function handleFirstNameChange(e) {
-    get.value;
-  }
+  const handleIncreaseAge = () => {
+    console.log("in handleIncreaseAge (before setPerson call): ", person);
+    setPerson({ ...person, age: person.age + 1 });
+    // we've called setPerson, surely person has updated?
+    console.log("in handleIncreaseAge (after setPerson call): ", person);
+  };
 
-  function handleLastNameChange(e) {
-    lastName = e.target.value;
-  }
-
-  function handleReset() {
-    firstName = '';
-    lastName = '';
-  }
+  // this console.log runs every time the component renders
+  // what do you think this will print?
+  console.log("during render: ", person);
 
   return (
-    <form onSubmit={e => e.preventDefault()}>
-      <input
-        placeholder="First name"
-        value={firstName}
-        onChange={handleFirstNameChange}
-      />
-      <input
-        placeholder="Last name"
-        value={lastName}
-        onChange={handleLastNameChange}
-      />
-      <h1>Hi, {firstName} {lastName}</h1>
-      <button onClick={handleReset}>Reset</button>
-    </form>
+    <>
+      <h1>{person.name}</h1>
+      <h2>{person.age}</h2>
+      <button onClick={handleIncreaseAge}>Increase age</button>
+    </>
   );
 }
