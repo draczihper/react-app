@@ -20,3 +20,5 @@ function Person() {
     </>
   );
 }
+
+export default App;
