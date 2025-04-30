@@ -17,7 +17,7 @@ export default function Form() {
         To:{' '}
         <select
           value={to}
-          onChange={e => setTo(value => e.target.value)}>
+          onChange={e => setTo(e.target.value)}>
           <option value="Alice">Alice</option>
           <option value="Bob">Bob</option>
         </select>
