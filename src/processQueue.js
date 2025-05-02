@@ -3,9 +3,9 @@ export function getFinalState(baseState, queue) {
   
     for(let update of queue) {
       if(typeof update === 'function'){
-
+        finalState = update(finalState)
       } else {
-        
+        finalState = update
       }
     }
   
