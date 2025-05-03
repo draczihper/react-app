@@ -9,6 +9,7 @@ export function getFinalState(baseState, queue) {
       }
     }
   
+    // Return the final state
     return finalState;
   }
   
