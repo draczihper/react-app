@@ -1,74 +1,65 @@
-import { getFinalState } from './processQueue.js';
+import { useState } from 'react';
+import AddItem from './AddItem.js';
+import PackingList from './PackingList.js';
 
-function increment(n) {
-  return n + 1;
-}
-increment.toString = () => 'n => n+1';
+let nextId = 3;
+const initialItems = [
+  { id: 0, title: 'Warm socks', packed: true },
+  { id: 1, title: 'Travel journal', packed: false },
+  { id: 2, title: 'Watercolors', packed: false },
+];
 
-export default function App() {
+export default function TravelPlan() {
+  const [items, setItems] = useState(initialItems);
+  const [total, setTotal] = useState(3);
+  const [packed, setPacked] = useState(1);
+
+  function handleAddItem(title) {
+    setTotal(total + 1);
+    setItems([
+      ...items,
+      {
+        id: nextId++,
+        title: title,
+        packed: false
+      }
+    ]);
+  }
+
+  function handleChangeItem(nextItem) {
+    if (nextItem.packed) {
+      setPacked(packed + 1);
+    } else {
+      setPacked(packed - 1);
+    }
+    setItems(items.map(item => {
+      if (item.id === nextItem.id) {
+        return nextItem;
+      } else {
+        return item;
+      }
+    }));
+  }
+
+  function handleDeleteItem(itemId) {
+    setTotal(total - 1);
+    setItems(
+      items.filter(item => item.id !== itemId)
+    );
+  }
+
   return (
-    <>
-      <TestCase
-        baseState={0}
-        queue={[1, 1, 1]}
-        expected={1}
+    <>  
+      <AddItem
+        onAddItem={handleAddItem}
+      />
+      <PackingList
+        items={items}
+        onChangeItem={handleChangeItem}
+        onDeleteItem={handleDeleteItem}
       />
       <hr />
-      <TestCase
-        baseState={0}
-        queue={[
-          increment,
-          increment,
-          increment
-        ]}
-        expected={3}
-      />
-      <hr />
-      <TestCase
-        baseState={0}
-        queue={[
-          5,
-          increment,
-        ]}
-        expected={6}
-      />
-      <hr />
-      <TestCase
-        baseState={0}
-        queue={[
-          5,
-          increment,
-          42,
-        ]}
-        expected={42}
-      />
-    </>
-  );
-}
-
-function TestCase({
-  baseState,
-  queue,
-  expected
-}) {
-  const actual = getFinalState(baseState, queue);
-  return (
-    <>
-      <p>Base state: <b>{baseState}</b></p>
-      <p>Queue: <b>[{queue.join(', ')}]</b></p>
-      <p>Expected result: <b>{expected}</b></p>
-      <p style={{
-        color: actual === expected ?
-          'green' :
-          'red'
-      }}>
-        Your result: <b>{actual}</b>
-        {' '}
-        ({actual === expected ?
-          'correct' :
-          'wrong'
-        })
-      </p>
+      <b>{packed} out of {total} packed!</b>
     </>
   );
 }
