@@ -11,8 +11,9 @@ const initialItems = [
 
 export default function TravelPlan() {
   const [items, setItems] = useState(initialItems);
-  const [total, setTotal] = useState(3);
-  const [packed, setPacked] = useState(1);
+
+  const total = items.length;
+  const packed = items.filter(item => item.packed)
 
   function handleAddItem(title) {
     setTotal(total + 1);
