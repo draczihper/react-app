@@ -12,6 +12,8 @@ const initialItems = [
 export default function TravelPlan() {
   const [items, setItems] = useState(initialItems);
 
+
+  // Filter or remove packed items complete
   const total = items.length;
   const packed = items.filter(item => item.packed)
 
