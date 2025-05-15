@@ -1,68 +1,31 @@
 import { useState } from 'react';
-import AddItem from './AddItem.js';
-import PackingList from './PackingList.js';
 
-let nextId = 3;
-const initialItems = [
-  { id: 0, title: 'Warm socks', packed: true },
-  { id: 1, title: 'Travel journal', packed: false },
-  { id: 2, title: 'Watercolors', packed: false },
-];
-
-export default function TravelPlan() {
-  const [items, setItems] = useState(initialItems);
-
-
-  // Filter or remove packed items complete
-  const total = items.length;
-  const packed = items.filter(item => item.packed)
-
-  function handleAddItem(title) {
-    setTotal(total + 1);
-    setItems([
-      ...items,
-      {
-        id: nextId++,
-        title: title,
-        packed: false
-      }
-    ]);
-  }
-
-  function handleChangeItem(nextItem) {
-    if (nextItem.packed) {
-      setPacked(packed + 1);
-    } else {
-      setPacked(packed - 1);
-    }
-    setItems(items.map(item => {
-      if (item.id === nextItem.id) {
-        return nextItem;
-      } else {
-        return item;
-      }
-    }));
-  }
-
-  function handleDeleteItem(itemId) {
-    setTotal(total - 1);
-    setItems(
-      items.filter(item => item.id !== itemId)
-    );
-  }
-
+function Panel({ title, children }) {
+  const [isActive, setIsActive] = useState(false);
   return (
-    <>  
-      <AddItem
-        onAddItem={handleAddItem}
-      />
-      <PackingList
-        items={items}
-        onChangeItem={handleChangeItem}
-        onDeleteItem={handleDeleteItem}
-      />
-      <hr />
-      <b>{packed} out of {total} packed!</b>
+    <section className="panel">
+      <h3>{title}</h3>
+      {isActive ? (
+        <p>{children}</p>
+      ) : (
+        <button onClick={() => setIsActive(true)}>
+          Show
+        </button>
+      )}
+    </section>
+  );
+}
+
+export default function Accordion() {
+  return (
+    <>
+      <h2>Almaty, Kazakhstan</h2>
+      <Panel title="About">
+        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
+      </Panel>
+      <Panel title="Etymology">
+        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
+      </Panel>
     </>
   );
 }
