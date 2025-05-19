@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 export default function Person() {
   const [person, setPerson] = useState({ name: "John", age: 100 });
 
@@ -14,6 +16,10 @@ export default function Person() {
 
   return (
     <>
+    <label htmlFor="firstName">First Name</label>
+      <input type="text" id='firstName' name='firstName'/>
+      <label htmlFor="lastName">Last Name</label>
+      <input type="text" id='firstName' name='firstName'/>
       <h1>{person.name}</h1>
       <h2>{person.age}</h2>
       <button onClick={handleIncreaseAge}>Increase age</button>
