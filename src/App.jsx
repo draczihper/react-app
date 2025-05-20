@@ -34,8 +34,8 @@ export default function Person() {
       <input type="text" id='firstName' name='firstName' onChange={handleLastNameChange}/>
       <h1>{fullName}</h1>
 
-      {/* <h2>{person.age}</h2>
-      <button onClick={handleIncreaseAge}>Increase age</button> */}
+      <h2>{person.age}</h2>
+      <button onClick={handleIncreaseAge}>Increase age</button> 
     </>
   );
 }
