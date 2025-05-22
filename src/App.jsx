@@ -24,7 +24,7 @@ export default function Person() {
 
   // this console.log runs every time the component renders
   // what do you think this will print?
-  console.log("during render: ", person);
+  // console.log("during render: ", person);
 
   return (
     <>
